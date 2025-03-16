@@ -20,6 +20,7 @@ if (!$event) {
     echo "Evenimentul nu a fost găsit.";
     exit;
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -29,41 +30,6 @@ if (!$event) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalii Eveniment</title>
     <link rel="stylesheet" href="./assesrs/events_styles.css">
-    <style>
-        /* Stiluri CSS pentru textarea și buton */
-        form textarea {
-            width: 100%;
-            height: 100px;
-            margin: 10px 0;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        form button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        form button:hover {
-            background-color: #45a049;
-        }
-
-        /* Stiluri pentru comentarii */
-        .comment {
-            margin-bottom: 15px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-        .comment strong {
-            color: #333;
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -92,15 +58,7 @@ if (!$event) {
         </div>
 
         <!-- Formular pentru adăugarea unui comentariu -->
-        <?php if (isset($_SESSION['user_id'])): ?>
-    <h3>Adaugă un Comentariu</h3>
-    <form action="comment.php" method="post">
-        <textarea name="comment" placeholder="Lasă un comentariu..." required></textarea><br>
-        <input type="hidden" name="event_id" value="<?php echo $event_id; ?>">
-        <button type="submit">Adaugă Comentariu</button>
-    </form>
-<?php endif; ?>
-
+       
     </main>
 
     <footer>

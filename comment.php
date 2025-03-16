@@ -8,7 +8,6 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-
 // Verificăm dacă formularul a fost trimis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Curățăm input-ul pentru a preveni vulnerabilitățile XSS
@@ -34,12 +33,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Executăm interogarea
     if ($stmt->execute()) {
         // Redirectăm utilizatorul înapoi la pagina de detalii a evenimentului
-        header("Location: event-details.php?id=$event_id");
+        header("Location: event_details.php?id=$event_id");
         exit();
     } else {
         echo "Eroare la adăugarea comentariului: " . $stmt->errorInfo()[2];
     }
 }
-
-mysqli_close($conn);
 ?>
