@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'config/db.php';
+include 'config/db.php'; // Include fișierul de conectare la baza de date
 
 // Verifică dacă utilizatorul este conectat
 if (!isset($_SESSION['user_id'])) {
@@ -8,12 +8,15 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
+// Verifică dacă ID-ul evenimentului este furnizat
 if (!isset($_GET['id'])) {
     echo "ID-ul evenimentului nu a fost specificat.";
     exit();
 }
 
 $event_id = $_GET['id'];
+
+// Verifică dacă utilizatorul este cel care a creat evenimentul
 $stmt = $pdo->prepare("SELECT * FROM events WHERE id = :id AND user_id = :user_id");
 $stmt->execute(['id' => $event_id, 'user_id' => $_SESSION['user_id']]);
 $event = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -24,10 +27,12 @@ if (!$event) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Preia datele din formular
     $title = $_POST['title'];
     $description = $_POST['description'];
     $date = $_POST['date'];
 
+    // Actualizează evenimentul în baza de date
     $stmt = $pdo->prepare("UPDATE events SET title = :title, description = :description, date = :date WHERE id = :id AND user_id = :user_id");
     $stmt->execute([
         'title' => $title,
@@ -38,6 +43,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     ]);
 
     echo "Evenimentul a fost actualizat cu succes!";
+    header("Location: events.php"); // După actualizare, redirecționează înapoi la lista de evenimente
+    exit();
 }
 ?>
 
