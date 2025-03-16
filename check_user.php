@@ -2,7 +2,7 @@
 include 'config/db.php'; // Include fișierul de conectare la baza de date
 
 // Nume utilizator pe care vrei să-l verifici
-$username_to_check = 'Florean'; // Înlocuiește cu numele utilizatorului pe care vrei să-l verifici
+$username_to_check = 'numele_utilizatorului'; // Înlocuiește cu numele utilizatorului pe care vrei să-l verifici
 
 try {
     // Interoghează baza de date pentru utilizatorul respectiv

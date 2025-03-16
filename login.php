@@ -17,12 +17,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->execute(['username' => $username]);
 
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
+    
     // Verifică dacă utilizatorul a fost găsit
     if ($user) {
         // Verifică dacă parola introdusă este corectă
         if (password_verify($password, $user['password'])) {
-            // Autentificare reușită
+            // Parola este corectă, autentificare reușită
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['username'];
             header('Location: events.php');

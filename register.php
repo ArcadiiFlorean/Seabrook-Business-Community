@@ -4,7 +4,7 @@ include 'config/db.php'; // Include fișierul de configurare al bazei de date
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Preia datele din formular
     $username = $_POST['username'];
-    $password = md5($_POST['password']);  // Criptare parolă
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);  // Criptare parolă folosind password_hash()
     $email = $_POST['email'];
 
     try {
@@ -26,7 +26,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Eroare: " . $e->getMessage();
     }
 }
-
 ?>
 
 <form method="post" action="register.php">

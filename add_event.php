@@ -9,8 +9,8 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $title = $_POST['title'];
-    $description = $_POST['description'];
+    $title = htmlspecialchars($_POST['title']);
+    $description = htmlspecialchars($_POST['description']);
     $date = $_POST['date'];
     $user_id = $_SESSION['user_id']; // Asociem evenimentul cu utilizatorul
 
