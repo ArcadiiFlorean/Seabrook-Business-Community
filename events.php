@@ -4,23 +4,12 @@ include 'config/db.php'; // Include fișierul de conectare la baza de date
 
 // Verifică dacă utilizatorul este conectat
 if (!isset($_SESSION['user_id'])) {
-    echo "
-    <html>
-        <head>
-            <title>Autentificare Necesara</title>
-            <link rel='stylesheet' type='text/css' href='style.css'>
-        </head>
-        <body>
-            <div class='container'>
-                <div class='message'>
-                    <h1>You need to log in to view the events!</h1>
-                    <p>Vă rugăm să vă autentificați pentru a accesa secțiunea de evenimente exclusive. Apăsați pe butonul de mai jos pentru a vă conecta.</p>
-                    <img src='login_image.jpg' alt='Autentificare' class='login-image'>
-                    <a href='login.php' class='login-button'>Autentifică-te</a>
-                </div>
-            </div>
-        </body>
-    </html>";
+    echo '
+    <div class="message">
+        <h1>Ne pare rău!</h1>
+        <p>Vă rugăm să vă autentificați pentru a accesa secțiunea de evenimente exclusive.</p>
+        <a href="login.php"><button>Autentifică-te</button></a>
+    </div>';
     exit();
 }
 
@@ -60,9 +49,6 @@ if (isset($_GET['event_date'])) {
 
 $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Debugging: Verifică câte evenimente au fost găsite
-echo "Număr evenimente găsite: " . count($events) . "<br>";
-
 ?>
 
 <!DOCTYPE html>
@@ -72,7 +58,10 @@ echo "Număr evenimente găsite: " . count($events) . "<br>";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Evenimente</title>
     <link rel="stylesheet" href="./assesrs/events_styles.css">
+    <!-- Test link CSS pentru verificare -->
+
 </head>
+
 <body>
     <h1>Evenimente</h1>
 

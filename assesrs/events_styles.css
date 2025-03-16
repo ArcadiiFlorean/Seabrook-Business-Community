@@ -1,76 +1,102 @@
+/* Resetare stiluri de bază */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Containerul general al paginii */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
-    margin: 0;
-    padding: 20px;
-    text-align: center;
-}
-
-h1, h2 {
     color: #333;
-}
-
-form {
-    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 20px;
-    margin: 20px auto;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    width: 50%;
-    text-align: left;
 }
 
-label {
-    font-weight: bold;
+/* Stil pentru titluri */
+h1, h2 {
+    color: #4CAF50;
 }
 
-input, textarea {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
+/* Stiluri pentru butoane */
 button {
-    background: #28a745;
+    background-color: #4CAF50;
     color: white;
-    padding: 10px 15px;
+    padding: 10px 20px;
+    font-size: 16px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background: #218838;
+    background-color: #45a049;
+}
+
+/* Formular de adăugare eveniment */
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 30px;
+}
+
+form label {
+    font-size: 16px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+form input, form textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+form textarea {
+    height: 100px;
+}
+
+/* Stiluri pentru evenimente */
+#events {
+    width: 100%;
+    max-width: 600px;
+    margin-top: 20px;
 }
 
 .event {
-    background: white;
-    margin: 15px auto;
+    background-color: #fff;
     padding: 15px;
+    margin-bottom: 10px;
     border-radius: 8px;
-    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
-    width: 60%;
-    text-align: left;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .event h3 {
-    margin-top: 0;
-    color: #007bff;
+    font-size: 18px;
+    color: #4CAF50;
 }
 
 .event p {
-    margin: 5px 0;
+    font-size: 16px;
+    color: #555;
 }
 
-a {
-    color: #007bff;
+.event a {
+    color: #007BFF;
     text-decoration: none;
-    font-weight: bold;
 }
 
-a:hover {
+.event a:hover {
     text-decoration: underline;
 }
