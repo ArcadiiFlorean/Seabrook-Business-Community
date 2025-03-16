@@ -4,8 +4,9 @@ include 'config/db.php'; // Include fișierul de conectare la baza de date
 
 // Verifică dacă formularul a fost trimis
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    // Elimină spațiile de la începutul și sfârșitul valorilor introduse
+    $username = trim($_POST['username']);
+    $password = trim($_POST['password']);
 
     // Protejează datele de intrare
     $username = htmlspecialchars($username);
@@ -17,14 +18,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($user && password_verify($password, $user['password'])) {
-        // Autentificare reușită
-        $_SESSION['user_id'] = $user['id'];
-        $_SESSION['username'] = $user['username'];
-        header('Location: events.php');
-        exit();
+    // Verifică dacă utilizatorul a fost găsit
+    if ($user) {
+        // Verifică dacă parola introdusă este corectă
+        if (password_verify($password, $user['password'])) {
+            // Autentificare reușită
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['username'] = $user['username'];
+            header('Location: events.php');
+            exit();
+        } else {
+            echo "Parola este incorectă!<br>";
+        }
     } else {
-        $error_message = "Autentificare eșuată! Utilizator sau parolă incorectă.";
+        echo "Utilizatorul nu există.<br>";
     }
 }
 ?>
@@ -35,15 +42,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Autentificare</title>
+    <link rel="stylesheet" href="./assesrs/login.css">
 </head>
 <body>
     <h1>Autentificare</h1>
-
-    <?php
-    if (isset($error_message)) {
-        echo "<p style='color: red;'>$error_message</p>";
-    }
-    ?>
 
     <form action="login.php" method="POST">
         <label for="username">Nume utilizator:</label>
@@ -54,6 +56,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         <button type="submit">Autentificare</button>
     </form>
-
 </body>
 </html>

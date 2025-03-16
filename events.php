@@ -48,6 +48,8 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Evenimente</title>
+    <link rel="stylesheet" href="./assesrs/events_styles.css">
+
 </head>
 <body>
     <h1>Evenimente</h1>

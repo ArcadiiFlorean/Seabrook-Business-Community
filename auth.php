@@ -1,21 +1,22 @@
 <?php
 session_start();
-include 'config/db.php'; // Dacă db.php este într-un subfolder "config"
+include 'config/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $username = mysqli_real_escape_string($conn, $_POST['username']);
+    $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // Check if user exists
-    $result = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username'");
-    $user = mysqli_fetch_assoc($result);
+    // Verifică dacă utilizatorul există
+    $stmt = $pdo->prepare("SELECT * FROM users WHERE username = :username");
+    $stmt->execute(['username' => $username]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($user && password_verify($password, $user['password'])) {
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['role'] = $user['role'];
-        header('Location: index.php');  // Redirect to homepage
+        header('Location: index.php');  // Redirecționează la pagina principală
     } else {
-        echo "Invalid credentials.";
+        echo "Date de autentificare invalide.";
     }
 }
 ?>
