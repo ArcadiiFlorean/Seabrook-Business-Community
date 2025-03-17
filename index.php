@@ -33,7 +33,7 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <img src="./img/logo__img.svg" alt="Logo Comunitatea Seabrook" class="header__logo" width="150" height="auto">
             
             <!-- Titlul secțiunii -->
-            <h1 class="header__title">Seabrook Community</h1>
+            <h1 class="header__title"> Connecting Ideas, Empowering Growth!</h1>
 
             <!-- Navigare -->
             <ul class="nav__list">
@@ -63,8 +63,9 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="main-content">
    
       <div class="intro-text">
-        <h1 class="intro-title">Welcome to Seabrook Community</h1>
-        <p class="intro-description">Seabrook is a vibrant coastal town where the spirit of togetherness thrives. Our community is dedicated to fostering connections, celebrating events, and supporting each other in every step. Join us in making Seabrook an even better place to live and grow!</p>
+      <h1 class="intro-title">Welcome to <span class="highlight">Seabrook</span> Business <span id="span-community">Community</span></h1>
+
+        <p class="intro-description">Seabrook is a thriving coastal town that fosters innovation, entrepreneurship, and economic growth. Our business community is dedicated to supporting local enterprises, networking opportunities, and sustainable development. Whether you're a startup, a growing company, or an established business, Seabrook offers the resources and connections to help you succeed. Join us in building a prosperous future together!</p>
         <ul class="social-items">
             <li class="social-list">
                 <a href="#" class="social-link">
@@ -96,7 +97,7 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </li>
         </ul>
       </div>
-      <img src="./img/Group 123.png" alt="main_logo" class="main-logo">
+      <img src="./img/4.png" alt="main_logo" class="main-img">
     </div>
   </div>
 </section>

@@ -8,44 +8,47 @@ if (!isset($_SESSION['user_id'])) {
     ?>
 
 <!DOCTYPE html>
-<html lang="ro">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acces Restricționat</title>
-    
-
+    <title>Access Restricted</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Ensure you have this CSS file -->
 </head>
 <body>
-    <div class="message message--error">
-        <h1 class="message__title">We're sorry!</h1>
-        <p class="message__text">Sign in to explore upcoming events!</p>
-        <a href="login.php">
-            <button class="message__button">Login</button>
-        </a>
-    </div>
-    <div class="img-grid">
-        <div class="container-grid">
-             <img class="img-grid-list" src="./img/img4.jpeg" alt="Imagine 4">
-            <img class="img-grid-list" src="./img/img1.jpeg" alt="Imagine 1">
-            <img class="img-grid-list" src="./img/img2.jpg" alt="Imagine 2">
-            <img class="img-grid-list" src="./img/img3.jpg" alt="Imagine 3">
-            <img class="img-grid-list" src="./img/img4.jpeg" alt="Imagine 4">
-            <img class="img-grid-list" src="./img/img5.jpg" alt="Imagine 5">
-            <img class="img-grid-list" src="./img/img6.jpg" alt="Imagine 6">
-            <img class="img-grid-list" src="./img/img3.jpg" alt="Imagine 3">
-            <img class="img-grid-list" src="./img/img6.jpg" alt="Imagine 6">
+
+    <main class="container">
         
-        </div>
-    </div>
+        <section class="section-events">
+            <div class="message message--error">
+                <h1 class="message__title">We apologize for the inconvenience!</h1>
+                <p class="message__text">Please sign in to explore upcoming events and stay updated with the latest news</p>
+                <a href="login.php" class="message__button" role="button">Login</a>
+            </div>
+
+            <div class="img-grid">
+                <div class="container-grid">
+                    <img class="img-grid-list" src="./img/group1.png" alt="Seabrook cityscape">
+                    <img class="img-grid-list" src="./img/group2.png" alt="Community gathering in Seabrook">
+                    <img class="img-grid-list" src="./img/group3.png" alt="Cultural event in Seabrook">
+                    <img class="img-grid-list" src="./img/group3.png" alt="Seabrook beach at sunset">
+                    <img class="img-grid-list" src="./img/group2.png" alt="Music festival in Seabrook">
+                    <img class="img-grid-list" src="./img/group1.png" alt="Volunteers working in Seabrook">
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer-events">
+        <p class="footer__text">&copy; 2025 Seabrook Community</p>
+    </footer>
+
 </body>
 </html>
 
-    <footer class="footer-events">
-        <p class="footer__text">&copy; 2025 Comunitatea Seabrook</p>
-    </footer>
-    </body>
-    </html>
+    
+  
 
     <?php
     exit();}

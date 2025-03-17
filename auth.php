@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Autentificare</title>
-    <link rel="stylesheet" href="./assets/events_style.css">
+
 </head>
 <body>
 <h1 class="auth__title">Autentificare</h1>

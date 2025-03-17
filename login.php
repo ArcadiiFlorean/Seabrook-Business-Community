@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <img src="./img/logo__img.svg" alt="Logo Comunitatea Seabrook" class="header__logo" width="150" height="auto">
             
             <!-- Titlul secțiunii -->
-            <h1 class="header__title">Seabrook Community</h1>
+            <h1 class="header__title">Seabrook Business Starts with You – Sign In to Begin!</h1>
 
             <!-- Navigare -->
             <ul class="nav__list">
@@ -137,7 +137,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <input type="password" id="password" name="password" required autocomplete="off">
                 </div>
 
-                <button type="submit">Login</button>
+                <button id="login-btn" type="submit">Login</button>
             </fieldset>
         </form>
     </div>

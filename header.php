@@ -16,7 +16,7 @@
             <img src="./img/logo__img.svg" alt="Logo Comunitatea Seabrook" class="header__logo" width="150" height="auto">
             
             <!-- Titlul secțiunii -->
-            <h1 class="header__title">Seabrook Community</h1>
+            <h1 class="header__title">Events that Inspire, Connections that Last</h1>
 
             <!-- Navigare -->
             <ul class="nav__list">
