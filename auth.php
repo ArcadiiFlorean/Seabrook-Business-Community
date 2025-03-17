@@ -28,17 +28,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Autentificare</title>
+    <link rel="stylesheet" href="./assets/index.css">
 </head>
 <body>
-    <h1>Autentificare</h1>
-    <form action="auth.php" method="POST">
-        <label for="username">Nume utilizator:</label>
-        <input type="text" id="username" name="username" required><br><br>
+<h1 class="auth__title">Autentificare</h1>
+<form action="auth.php" method="POST" class="auth">
+    <div class="auth__field">
+        <label for="username" class="auth__label">Nume utilizator:</label>
+        <input type="text" id="username" name="username" class="auth__input" required>
+    </div>
 
-        <label for="password">Parolă:</label>
-        <input type="password" id="password" name="password" required><br><br>
+    <div class="auth__field">
+        <label for="password" class="auth__label">Parolă:</label>
+        <input type="password" id="password" name="password" class="auth__input" required>
+    </div>
 
-        <button type="submit">Autentifică-te</button>
-    </form>
+    <button type="submit" class="auth__button">Autentifică-te</button>
+</form>
+
 </body>
 </html>

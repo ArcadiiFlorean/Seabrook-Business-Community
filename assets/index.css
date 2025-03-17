@@ -1,0 +1,120 @@
+.container {
+  max-width: 1392px;
+  margin: 0 auto;
+}
+
+.header {
+  background: linear-gradient(to right, rgb(233, 219, 246), #9d6afd);
+}
+.nav__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 0;
+  margin-bottom: 55px;
+}
+
+.nav__item:hover {
+  color: rgb(217, 17, 17);
+}
+
+.nav__list {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  list-style: none;
+}
+.header__title {
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 100%;
+  letter-spacing: -0.03em;
+  background: linear-gradient(136deg, #8258c8 0%, #2c84c8 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nav__link {
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 193%;
+  text-transform: uppercase;
+  color: white;
+}
+
+.nav__link:hover {
+  color: wheat;
+}
+.nav__link--btn {
+  width: 135px;
+  height: 50px;
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 16px;
+  border: 2px solid transparent;
+  border-radius: 50px;
+  background-image: linear-gradient(white, white),
+    linear-gradient(to right, #45d0bd, #44b6e9);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}
+
+.nav__link--btn:hover {
+  background-image: linear-gradient(
+    to right,
+    #44b6e9,
+    #45d0bd
+  ); /* Reverse gradient on hover */
+  border-color: #45d0bd; /* Change border color on hover */
+  cursor: pointer;
+}
+/* hero section */
+.main-section {
+  margin-bottom: 55px;
+}
+.main-content {
+  display: flex;
+  margin: 0 60px;
+}
+
+.intro-title {
+  font-weight: 700;
+  font-size: 62px;
+  line-height: 119%;
+  color: #110f14;
+}
+
+.intro-description {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 167%;
+  color: #5f5a69;
+  max-width: 550px;
+  margin-bottom: 70px;
+}
+/*footer*/
+.footer {
+  padding: 25px;
+  background: linear-gradient(to right, #9d6afd, rgb(233, 219, 246));
+}
+
+.footer__text {
+  color: white;
+}
+
+.social-items {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.social-list {
+  list-style: none;
+}
+/*Auth*/
+
+.auth__title{
+    color: rebeccapurple;
+}

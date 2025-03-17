@@ -5,10 +5,12 @@ include 'config/db.php'; // Include fișierul de conectare la baza de date
 // Verifică dacă utilizatorul este conectat
 if (!isset($_SESSION['user_id'])) {
     echo '
-    <div class="message">
-        <h1>Ne pare rău!</h1>
-        <p>Vă rugăm să vă autentificați pentru a accesa secțiunea de evenimente exclusive.</p>
-        <a href="login.php"><button>Autentifică-te</button></a>
+    <div class="message message--error">
+        <h1 class="message__title">Ne pare rău!</h1>
+        <p class="message__text">Vă rugăm să vă autentificați pentru a accesa secțiunea de evenimente exclusive.</p>
+        <a href="login.php" class="message__link">
+            <button class="message__button">Autentifică-te</button>
+        </a>
     </div>';
     exit();
 }
