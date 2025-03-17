@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seabrook Community</title>
  
-    <link rel="stylesheet" href="./assets/events_style.css"><!-- presupunând că ai un fișier CSS -->
+
     <link rel="stylesheet" href="./assets/index.css">
 </head>
 <header class="header">
@@ -16,7 +16,7 @@
             <img src="./img/logo__img.svg" alt="Logo Comunitatea Seabrook" class="header__logo" width="150" height="auto">
             
             <!-- Titlul secțiunii -->
-            <h1 class="header__title">Comunitatea Seabrook</h1>
+            <h1 class="header__title">Seabrook Community</h1>
 
             <!-- Navigare -->
             <ul class="nav__list">

@@ -38,19 +38,19 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <!-- Navigare -->
             <ul class="nav__list">
                 <li class="nav__item">
-                    <a class="nav__link" href="index.php">Acasă</a>
+                    <a class="nav__link" href="index.php">Home</a>
                 </li>
                 <li class="nav__item">
-                    <a class="nav__link" href="events.php">Evenimente</a>
+                    <a class="nav__link" href="events.php">Events</a>
                 </li>
                 <li class="nav__item">
                     <a class="nav__link" href="contact.php">Contact</a> <!-- Aș schimba linkul pentru Contact -->
                 </li>
                 <li class="nav__item">
-                    <button class="nav__link--btn" onclick="window.location.href='login.php';">Autentificare</button>
+                    <button class="nav__link--btn" onclick="window.location.href='login.php';">Login</button>
                 </li>
                 <li class="nav__item">
-                    <button class="nav__link--btn" onclick="window.location.href='register.php';">Înregistrare</button>
+                    <button class="nav__link--btn" onclick="window.location.href='register.php';">Sing Up</button>
                 </li>
             </ul>
         </div>

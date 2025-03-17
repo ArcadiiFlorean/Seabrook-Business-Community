@@ -7,26 +7,39 @@ if (!isset($_SESSION['user_id'])) {
     include 'header.php'; // Include header-ul dacă ai unul
     ?>
 
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acces Restricționat</title>
+    
+
+</head>
+<body>
     <div class="message message--error">
         <h1 class="message__title">We're sorry!</h1>
-        <p class="message__text">Please log in to access the exclusive events section.</p>
-        <a href="login.php" class="message__link">
-            <button class="message__button">Autentifică-te</button>
+        <p class="message__text">Sign in to explore upcoming events!</p>
+        <a href="login.php">
+            <button class="message__button">Login</button>
         </a>
     </div>
     <div class="img-grid">
-    <div class="container-grid">
-        <img class="img-grid-list" src="./img/img1.jpeg" alt="Imagine 1">
-        <img class="img-grid-list" src="./img/img2.jpg" alt="Imagine 2">
-        <img class="img-grid-list" src="./img/img3.jpg" alt="Imagine 3">
-        <img class="img-grid-list" src="./img/img4.jpeg" alt="Imagine 4">
-        <img class="img-grid-list" src="./img/img5.jpg" alt="Imagine 5">
-        <img class="img-grid-list" src="./img/img6.jpg" alt="Imagine 6">
-       
+        <div class="container-grid">
+             <img class="img-grid-list" src="./img/img4.jpeg" alt="Imagine 4">
+            <img class="img-grid-list" src="./img/img1.jpeg" alt="Imagine 1">
+            <img class="img-grid-list" src="./img/img2.jpg" alt="Imagine 2">
+            <img class="img-grid-list" src="./img/img3.jpg" alt="Imagine 3">
+            <img class="img-grid-list" src="./img/img4.jpeg" alt="Imagine 4">
+            <img class="img-grid-list" src="./img/img5.jpg" alt="Imagine 5">
+            <img class="img-grid-list" src="./img/img6.jpg" alt="Imagine 6">
+            <img class="img-grid-list" src="./img/img3.jpg" alt="Imagine 3">
+            <img class="img-grid-list" src="./img/img6.jpg" alt="Imagine 6">
+        
+        </div>
     </div>
-    </div>
-
-
+</body>
+</html>
 
     <footer class="footer-events">
         <p class="footer__text">&copy; 2025 Comunitatea Seabrook</p>
