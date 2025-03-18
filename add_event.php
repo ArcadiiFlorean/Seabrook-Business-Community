@@ -32,10 +32,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adăugare Eveniment</title>
+    <title>Adăugare </title>
 </head>
 <body>
-    <h1>Adăugare Eveniment</h1>
+    <h1>Adăugare</h1>
     <form action="add_event.php" method="POST">
         <label for="title">Titlu Eveniment:</label>
         <input type="text" id="title" name="title" required><br><br>

@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <input type="text" name="title" placeholder="Titlu Eveniment" required><br>
         <textarea name="description" placeholder="Descriere" required></textarea><br>
         <input type="date" name="date" required><br>
-        <button type="submit">Crează Eveniment</button>
+        <button type="submit">Crează </button>
     </form>
 </main>
 
