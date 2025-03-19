@@ -11,7 +11,7 @@ body {
   max-width: 1392px;
   margin: 0 auto;
 }
-.header{
+.header {
   padding-bottom: 80px;
 }
 .nav__bar {
@@ -548,8 +548,6 @@ button:hover {
 .events-main__header {
   display: flex;
   flex-direction: column;
-
-  max-width: 450px;
 }
 
 .events-main__title {
@@ -620,7 +618,7 @@ button:hover {
 .comment-form button {
   width: 100%;
   padding: 10px;
-background-color:#003366;
+  background-color: #003366;
   color: white;
   border: none;
   cursor: pointer;
@@ -687,40 +685,13 @@ background-color:#003366;
   display: flex;
   gap: 10px;
   margin-top: 15px;
+  background-color: #50b2fd;
 }
 
-.edit-btn,
-.delete-btn {
-  padding: 10px 15px;
-  text-decoration: none;
-  border-radius: 5px;
-  font-weight: bold;
-  transition: 0.3s;
-}
-
-.edit-btn {
-  background: #282aa7;
-  color: white;
-}
-
-.edit-btn:hover {
-  background: #218838;
-}
-
-.delete-btn {
-  background: #dc3545;
-  color: white;
-}
-
-.delete-btn:hover {
-  background: #c82333;
-}
-
-
-.no-events{
+.no-events {
   color: rgb(255, 255, 255);
- display: flex;
- justify-content: center;
- font-size: 35px;
+  display: flex;
+  justify-content: center;
+  font-size: 35px;
 }
 /* Responsive Design */
