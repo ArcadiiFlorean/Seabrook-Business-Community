@@ -8,7 +8,7 @@ html, body {
 
 
 .container {
-  max-width: 1392px;
+  max-width: 1px;
   margin: 0 auto;
 }
 
@@ -468,114 +468,144 @@ button:hover {
   cursor: pointer;
 }
 /*events*/
-.events-section {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* Container pentru secțiunea evenimentelor */
+#events {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+  gap: 40px; /* Spațiu între elemente */
+  max-width: 1200px; /* Centrare și limitare */
+  margin: 0 auto;
+  padding: 20px;
 }
 
-.events-content {
+
+
+/* Card de eveniment */
+.events-main{
+  background-color: red;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 35px;
 }
 
-.events-info {
-  max-width: 550px;
-  padding: 40px;
+.event-card {
+  position: relative;
+  background: white;
+  padding: 20px;
+  border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  flex: 1 1 calc(33.333% - 20px); /* Pe desktop, cardurile vor fi aranjate pe 3 coloane */
+  margin-bottom: 20px; /* Adăugăm o margine pentru a separa cardurile */
 }
 
-.events-main-text {
-  font-size: 36px;
+.event-card:hover {
+  transform: scale(1.02); /* Efect de hover */
+}
+
+.events-title {
+  font-size: 24px;
   font-weight: bold;
-  background: linear-gradient(to right, #0077b6, #90e0ef);
-  -webkit-background-clip: text;
-  color: transparent;
-  text-align: center;
+  color: #0077b6;
 }
 
-.events-main-paragraph {
-  font-weight: bold;
-  background: linear-gradient(to right, #92d3f7, #7aa1a8);
-  -webkit-background-clip: text;
-  color: transparent;
-  max-width: 400px;
-  margin-bottom: 60px;
-  text-align: center;
-}
-
-.events-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.events-form-group input,
-.events-form-group textarea {
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+.event-description {
   font-size: 16px;
-  width: 95%;
+  color: #333;
+  margin: 10px 0;
 }
 
+.date {
+  font-style: italic;
+  color: #555;
+}
 
+.comments-section {
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px solid #ddd;
+}
 
-.events__logout-button{
-  background-color: transparent;
-  color: rgb(255, 0, 0);
-  padding: 12px;
+.comment {
+  background: #f9f9f9;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.comment-form textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.comment-form button {
+  background: #0077b6;
+  color: white;
+  padding: 10px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 18px;
-  border: 2px solid #ff0000; 
-  transition: background-color 0.3s;
+  margin-top: 5px;
 }
-.events__logout-button:hover {
-  background-color: #ff0000;
+
+.comment-form button:hover {
+  background: #005f8a;
+}
+
+.event-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.edit-btn,
+.delete-btn {
+  padding: 10px 15px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.edit-btn {
+  background: #28a745;
   color: white;
 }
-#events {
 
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 coloane egale */
-  gap: 40px; /* Spațiu între elemente */
-  margin: 0 auto; /* Centrarea containerului pe pagină */
+.edit-btn:hover {
+  background: #218838;
 }
 
-.event {
-  display: flex;
-  flex-direction: column; /* Fiecare eveniment are un layout vertical */
-  justify-content: space-between;
-  box-sizing: border-box; /* Asigură că padding-ul nu afectează dimensiunile */
+.delete-btn {
+  background: #dc3545;
+  color: white;
 }
 
+.delete-btn:hover {
+  background: #c82333;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
-  #events {
-    grid-template-columns: 1fr; /* Pe dispozitive mai mici, se va folosi o singură coloană */
+  .events-main {
+    flex-direction: column; /* Pe dispozitive mobile, cardurile vor fi afișate pe verticală */
   }
-}
 
-.event-title{
-  display: flex;
-  justify-content: center;
-  color: white;
-}
-.events-title{
-  color: white;
-  font-size: 35px;
-}
-.event-description {
-  color: #ffffff; 
-  max-width: 450px;
-  font-size: 18px;
-}
+  .event-card {
+    flex: 1 1 100%; /* Cardurile vor ocupa întreaga lățime pe mobile */
+  }
 
-.date{
-  color: rgb(255, 255, 255);
-  font-size: 25px;
+  /* Ajustează titlurile și descrierile pentru a se potrivi mai bine pe ecrane mici */
+  .events-title {
+    font-size: 20px;
+  }
+
+  .event-description {
+    font-size: 14px;
+  }
+
+  .date {
+    font-size: 14px;
+  }
 }
