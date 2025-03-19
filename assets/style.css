@@ -1,4 +1,5 @@
-/* html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -6,19 +7,16 @@
   background-attachment: fixed;
 }
 
-
 .container {
   max-width: 1392px;
   margin: 0 auto;
 }
-
 
 .nav__bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 15px 0;
-  
 }
 
 .nav__list {
@@ -36,7 +34,7 @@
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  letter-spacing: 2px; 
+  letter-spacing: 2px;
 }
 
 .nav__link {
@@ -58,29 +56,28 @@
   height: 50px;
   font-weight: 600;
   font-size: 16px;
-  border: 2px solid #2a628f; 
+  border: 2px solid #2a628f;
   border-radius: 50px;
-  background-color: transparent; 
-  color: #00f7ff; 
-  transition: all 0.3s ease; 
+  background-color: transparent;
+  color: #00f7ff;
+  transition: all 0.3s ease;
 }
 
 .nav__link--btn:hover {
-  background-color: #2a628f; 
-  color: #fff; 
-  border: 2px solid #2a628f; 
+  background-color: #2a628f;
+  color: #fff;
+  border: 2px solid #2a628f;
   cursor: pointer;
 }
 
 /* hero section */
-.main-img{
+.main-img {
   width: 500px;
   height: auto;
 }
 .main-content {
   display: flex;
   margin: 0 60px;
-
 }
 
 .intro-title {
@@ -91,14 +88,12 @@
   color: transparent;
 }
 .highlight {
-
   font-size: 66px;
 }
-#span-community{
+#span-community {
   font-size: 31px;
 }
 .intro-description {
-
   background: linear-gradient(to right, #ffffff, #0283c9);
   -webkit-background-clip: text;
   background-clip: text;
@@ -115,7 +110,6 @@
   display: flex;
   justify-content: center;
   padding: 25px;
-
 }
 .footer__text {
   color: white;
@@ -133,7 +127,6 @@
 }
 .social-link {
   color: rgb(197, 197, 197);
-  
 }
 
 .social-link:hover {
@@ -155,7 +148,6 @@
 }
 
 .message--error {
-
   border-left: 5px solid #d32f2f;
   color: #d32f2f;
   width: 250px;
@@ -191,23 +183,22 @@
   font-weight: 600;
   font-size: 16px;
   text-decoration: none;
-  border: 2px solid #2a628f; 
+  border: 2px solid #2a628f;
   border-radius: 50px;
-  background-color: transparent; 
-  color: #00f7ff; 
-  transition: all 0.3s ease; 
+  background-color: transparent;
+  color: #00f7ff;
+  transition: all 0.3s ease;
 }
 
 .message__button:hover {
   background-color: #0056b3;
 }
 
-
 .footer-events {
   margin-top: 25px;
   padding: 25px;
-display: flex;
-justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 /*grid-img*/
 
@@ -238,8 +229,6 @@ justify-content: center;
   display: flex;
   align-items: center;
   justify-content: center;
-
-
 }
 
 .login-content {
@@ -261,22 +250,14 @@ justify-content: center;
 .login-main-text {
   font-size: 36px;
   font-weight: bold;
-  background: linear-gradient(
-    to right,
-    #0077b6,
-    #90e0ef
-  ); 
+  background: linear-gradient(to right, #0077b6, #90e0ef);
   -webkit-background-clip: text;
   color: transparent;
 }
 
 .login-main-paragrath {
   font-weight: bold;
-  background: linear-gradient(
-    to right,
-    #92d3f7,
-    #7aa1a8
-  ); 
+  background: linear-gradient(to right, #92d3f7, #7aa1a8);
   -webkit-background-clip: text;
   color: transparent;
   max-width: 400px;
@@ -290,12 +271,12 @@ justify-content: center;
 }
 .social-link-items svg,
 .social-link svg {
-  transition: fill 0.3s ease-in-out; 
+  transition: fill 0.3s ease-in-out;
 }
 
 .social-link-items:hover svg,
 .social-link:hover svg {
-  fill: #ffffff; 
+  fill: #ffffff;
 }
 
 .login-social {
@@ -309,10 +290,10 @@ justify-content: center;
   max-width: 400px;
   margin: auto;
   padding: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.5); 
+  border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.1); 
-  backdrop-filter: blur(10px); 
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -321,7 +302,7 @@ justify-content: center;
 }
 
 .login-form label {
-  color: white; 
+  color: white;
   font-weight: bold;
 }
 
@@ -332,7 +313,7 @@ justify-content: center;
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 4px;
   background: transparent;
-  color: white; 
+  color: white;
 }
 
 .login-form input::placeholder {
@@ -342,7 +323,7 @@ justify-content: center;
 #login-btn {
   width: 100%;
   padding: 10px;
-  background: transparent; 
+  background: transparent;
 
   border: 2px solid #2a628f;
   border-radius: 4px;
@@ -352,9 +333,9 @@ justify-content: center;
 }
 
 #login-btn:hover {
-  background-color: #2a628f; 
-  color: #fff; 
-  border: 2px solid #2a628f; 
+  background-color: #2a628f;
+  color: #fff;
+  border: 2px solid #2a628f;
   cursor: pointer;
 }
 .nav__bar--login {
@@ -365,11 +346,9 @@ justify-content: center;
 }
 /*register*/
 .register-section {
-
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
 
 .register-content {
@@ -398,18 +377,12 @@ justify-content: center;
 
 .register-main-paragrath {
   font-weight: bold;
-  background: linear-gradient(to right, #92d3f7, #7aa1a8); 
+  background: linear-gradient(to right, #92d3f7, #7aa1a8);
   -webkit-background-clip: text;
   color: transparent;
   max-width: 400px;
   margin-bottom: 60px;
   text-align: center;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
 }
 
 input[type="text"],
@@ -436,14 +409,12 @@ button:hover {
   background-color: #005f8a;
 }
 
-
-
 /*singup*/
 
 .center-button-container {
   display: flex;
-  justify-content: center; 
-  margin-top: 20px; 
+  justify-content: center;
+  margin-top: 20px;
 }
 
 .register-btn {
@@ -451,30 +422,170 @@ button:hover {
   height: 50px;
   font-weight: 600;
   font-size: 16px;
-  border: 2px solid #2a628f; 
+  border: 2px solid #2a628f;
   border-radius: 50px;
-  background-color: transparent; 
-  color: #00f7ff; 
-  transition: all 0.3s ease; 
+  background-color: transparent;
+  color: #00f7ff;
+  transition: all 0.3s ease;
   margin-left: 132px;
 }
 
 .register-btn:hover {
-  background-color: #2a628f; 
-  color: #fff; 
-  border: 2px solid #2a628f; 
+  background-color: #2a628f;
+  color: #fff;
+  border: 2px solid #2a628f;
   cursor: pointer;
 }
 /*events*/
+
+/* Stil general pentru container */
+.events-info {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.img-event {
+  width: 500px;
+  height: auto;
+  border-radius: 25px;
+}
+
+/* Stil pentru titlul principal */
+
+.events-info__main-text {
+  color: white;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* Stil pentru paragraful introductiv */
+.events-info__main-paragraph {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+/* Grupurile din formular */
+.events-form__group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+/* Etichetele */
+.events-form__label {
+  display: block;
+  color: white;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Câmpurile de input și textarea */
+.events-form__input,
+.events-form__textarea {
+  width: 90%;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+  background: transparent;
+  color: white;
+  font-size: 16px;
+  outline: none;
+}
+
+.events-form__textarea {
+  height: 80px;
+  resize: none;
+}
+
+/* Placeholder stilizat */
+.events-form__input::placeholder,
+.events-form__textarea::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Stil pentru buton */
+.events-form__button {
+  width: 100%;
+  padding: 12px;
+  background: transparent;
+  border: 2px solid #2a628f;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #00f7ff;
+  font-size: 16px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+/* Efect hover pe buton */
+.events-form__button:hover {
+  background-color: #2a628f;
+  color: #fff;
+  border: 2px solid #2a628f;
+}
+
 /* Container pentru secțiunea evenimentelor */
 
-.events-main{
+.events-main {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+}
+.events-main__header {
+  display: flex;
+  flex-direction: column;
 
+  max-width: 500px;
+}
+
+.events-main__title {
+  font-weight: 400;
+  font-size: 55px;
+  line-height: 100%;
+  text-align: center;
+  background: linear-gradient(133deg, #f8f8f8 0%, #50b2fd 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.events-main__paragraph {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 100%;
+  text-align: center;
+  background: linear-gradient(133deg, #f8f8f8 0%, #50b2fd 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.events-main__benefits {
+  background: linear-gradient(133deg, #f8f8f8 0%, #50b2fd 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 6mm;
 }
 
 
 
+
+/*events postari*/
+
+.events-container{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
 .event-card {
   position: relative;
   background: white;
@@ -507,7 +618,40 @@ button:hover {
   font-style: italic;
   color: #555;
 }
+/*experiment coment*/
+/* Stil pentru a fixa butonul de comentarii jos */
+.comment-form {
 
+  width: 95%; /* Lățime completă */
+  padding: 10px;
+  background-color: white;
+  border: 1px solid #ccc;
+  margin-top: 10px;
+}
+/* Stil pentru secțiunea de comentarii */
+.comments-section {
+
+  max-height: 200px; /* Poți ajusta înălțimea în funcție de nevoile tale */
+  overflow-y: auto;  /* Adaugă scroll pe verticală */
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-top: 20px;
+}
+
+
+/* Stil pentru comentarii */
+.comment {
+  background: #f9f9f9;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+
+
+
+
+/*//////////////////*/
 .comments-section {
   margin-top: 15px;
   padding-top: 10px;
@@ -520,26 +664,24 @@ button:hover {
   border-radius: 5px;
   margin-bottom: 5px;
 }
-
 .comment-form textarea {
-  width: 100%;
-  padding: 10px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
+  width: 100%; /* Lățime completă */
+  height: 60px; /* Înălțimea textarea-ului */
+  margin-bottom: 10px;
 }
+
 
 .comment-form button {
-  background: #0077b6;
-  color: white;
+  width: 100%; /* Lățime completă pentru buton */
   padding: 10px;
+  background-color: #4CAF50; /* Culoare de fundal pentru buton */
+  color: white;
   border: none;
-  border-radius: 4px;
   cursor: pointer;
-  margin-top: 5px;
+  font-size: 16px;
 }
-
 .comment-form button:hover {
-  background: #005f8a;
+  background-color: #45a049; /* Culoare mai închisă la hover */
 }
 
 .event-actions {
@@ -575,4 +717,4 @@ button:hover {
   background: #c82333;
 }
 
-Responsive Design */
+/* Responsive Design */

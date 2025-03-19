@@ -42,7 +42,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Autentificare</title>
-    <link rel="stylesheet" href="./assets/index.css">
+    <link rel="stylesheet" href="assets/style.css">
+    <!-- <link rel="stylesheet" href="./assets/index.css"> -->
 </head>
 <body>
 <header class="header">
@@ -52,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <img src="./img/logo__img.svg" alt="Logo Comunitatea Seabrook" class="header__logo" width="150" height="auto">
             
             <!-- Titlul secțiunii -->
-            <h1 class="header__title">Seabrook Community</h1>
+            <h1 class="header__title">Your Seabrook Business Network Awaits</h1>
 
             <!-- Navigare -->
             <ul class="nav__list">

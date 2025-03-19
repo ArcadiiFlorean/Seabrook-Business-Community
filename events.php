@@ -13,7 +13,7 @@ if (!isset($_SESSION['user_id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Access Restricted</title>
-    <link rel="stylesheet" href="assets/index.css"> <!-- Ensure you have this CSS file -->
+    <link rel="stylesheet" href="assets/index.css"> 
 </head>
 <body>
 
@@ -94,11 +94,12 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Evenimente</title>
-    <link rel="stylesheet" href="./assets/index.css">
+    <link rel="stylesheet" href="assets/style.css">
+    <!-- <link rel="stylesheet" href="./assets/index.css"> -->
 </head>
 <body>
 
-    <div class="events">
+   
         <header class="header">
             <div class="container">
                 <div class="nav__bar">
@@ -134,92 +135,105 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 </div>
             </div>
         </header>
-
         <section class="events-section">
-            <div class="container">
-            <div class="events-main">
-                    <!-- Formularul pentru adăugarea evenimentelor -->
-                    <div class="events-info">
-                        <h2 class="events-main-text">Add Events</h2>
-                        <p class="events-main-paragraph">Please complete the form below to add a new event.</p>
-                        <form action="events.php" method="POST" class="events-form">
-                            <div class="events-form-group">
-                                <label for="title">Title:</label>
-                                <input type="text" id="title" name="title" required>
-                            </div>
-                            <div class="events-form-group">
-                                <label for="description">Description:</label>
-                                <textarea id="description" name="description" required></textarea>
-                            </div>
-                            <div class="events-form-group">
-                                <label for="date">Date & Time:</label>
-                                <input type="datetime-local" id="date" name="date" required>
-                            </div>
-                            <button type="submit" name="add_event">Add Event</button>
-                        </form>
+    <div class="container">
+        <div class="events-main">
+        <div class="events-main__header">
+    <h1 class="events-main__title">Submit Your Event to Our Platform</h1>
+    <p class="events-main__paragraph">This is where you can add and manage your events with ease. Complete the form below to create a new event and showcase it to the community, helping you expand your reach and engage with a wider audience</p>
+    <ul class="events-main__benefits">
+        <li>Expand your audience by reaching a wider community.</li>
+        <li>Increase visibility of your events and attract more participants.</li>
+        <li>Network with professionals and organizations supporting your business.</li>
+        <li>Easy management of events, keeping everything in one place.</li>
+        <li>Boost engagement through comments and feedback from participants.</li>
+        <li>Accessibility for anyone to view and interact with your events.</li>
+        <li>Promote your events locally within an active community.</li>
+    
+    </ul>
+</div>
+
+            <div class="events-info">
+                <h2 class="events-info__main-text">Post Your Event</h2>
+                <p class="events-info__main-paragraph">Complete the form to provide event details and submit your listing.</p>
+                <form action="events.php" method="POST" class="events-form">
+                    <div class="events-form__group">
+                        <label for="title" class="events-form__label">Title:</label>
+                        <input type="text" id="title" name="title" class="events-form__input" required>
                     </div>
-
-                 
-                        <h2>Just do id</h2>
-                        <p>Paragraf</p>
-                        <img src="./img/group6.png" alt="Group image">
-                
-                </div>
+                    <div class="events-form__group">
+                        <label for="description" class="events-form__label">Description:</label>
+                        <textarea id="description" name="description" class="events-form__textarea" required></textarea>
+                    </div>
+                    <div class="events-form__group">
+                        <label for="date" class="events-form__label">Date & Time:</label>
+                        <input type="datetime-local" id="date" name="date" class="events-form__input" required>
+                    </div>
+                    <button type="submit" name="add_event" class="events-form__button">Add Event</button>
+                </form>
             </div>
-        </section>
 
-        <h2 class="event-title">Recent Events</h2>
-        <section id="events">
-            <div class="container">
-                <?php if (!empty($events)) { ?>
-                    <div class="events-container">
-                        <?php foreach ($events as $row) { ?>
-                            <div class="event-card">
-                                <div class="event-content">
-                                    <h3 class="events-title"><?= htmlspecialchars($row['title'], ENT_QUOTES, 'UTF-8') ?></h3>
-                                    <p class="event-description"><?= nl2br(htmlspecialchars($row['description'], ENT_QUOTES, 'UTF-8')) ?></p>
-                                    <p class="date"><em>Date: <?= htmlspecialchars($row['date'], ENT_QUOTES, 'UTF-8') ?></em></p>
+            <img class="img-event" src="./img/group6.png" alt="Group image">
+        </div>
+    </div>
+</section>
+
+    
+<section id="events">
+    <div class="container">
+        <?php if (!empty($events)) { ?>
+            <div class="events-container">
+                <?php foreach ($events as $row) { ?>
+                    <div class="event-card">
+                        <div class="event-content">
+                            <h3 class="events-title"><?= htmlspecialchars($row['title'], ENT_QUOTES, 'UTF-8') ?></h3>
+                            <p class="event-description"><?= nl2br(htmlspecialchars($row['description'], ENT_QUOTES, 'UTF-8')) ?></p>
+                            <p class="date"><em>Date: <?= htmlspecialchars($row['date'], ENT_QUOTES, 'UTF-8') ?></em></p>
+                        </div>
+
+                        <!-- Secțiunea de comentarii - adăugată la fiecare card -->
+                        <div class="comments-section">
+                            <h4>Comments:</h4>
+                            <?php 
+                            $comments_stmt = $pdo->prepare("SELECT * FROM comments WHERE event_id = :event_id ORDER BY created_at DESC");
+                            $comments_stmt->execute(['event_id' => $row['id']]);
+                            while ($comment = $comments_stmt->fetch(PDO::FETCH_ASSOC)) { ?>
+                                <div class='comment'>
+                                    <p><strong>User <?= htmlspecialchars($comment['user_id'], ENT_QUOTES, 'UTF-8') ?>:</strong> 
+                                    <?= htmlspecialchars($comment['comment'], ENT_QUOTES, 'UTF-8') ?></p>
                                 </div>
+                            <?php } ?>
 
-                                <div class="comments-section">
-                                    <h4>Comments:</h4>
-                                    <?php 
-                                    $comments_stmt = $pdo->prepare("SELECT * FROM comments WHERE event_id = :event_id ORDER BY created_at DESC");
-                                    $comments_stmt->execute(['event_id' => $row['id']]);
-                                    while ($comment = $comments_stmt->fetch(PDO::FETCH_ASSOC)) { ?>
-                                        <div class='comment'>
-                                            <p><strong>User <?= htmlspecialchars($comment['user_id'], ENT_QUOTES, 'UTF-8') ?>:</strong> 
-                                            <?= htmlspecialchars($comment['comment'], ENT_QUOTES, 'UTF-8') ?></p>
-                                        </div>
-                                    <?php } ?>
-
-                                    <form action='comment.php' method='post' class="comment-form">
-                                        <textarea name='comment' placeholder='Leave a comment...' required></textarea>
-                                        <input type='hidden' name='event_id' value='<?= $row['id'] ?>'>
-                                        <button type='submit'>Add Comment</button>
-                                    </form>
-                                </div>
-
-                                <?php if ($_SESSION['user_id'] == $row['user_id']) { ?>
-                                    <div class="event-actions">
-                                        <a href='edit_event.php?id=<?= $row['id'] ?>' class="edit-btn">Edit</a>
-                                        <a href='delete_event.php?id=<?= $row['id'] ?>' class="delete-btn">Delete</a>
-                                    </div>
-                                <?php } ?>
+                            <!-- Formularul de comentarii - va fi parte din card -->
+                          
+                        </div>
+                        <form action='comment.php' method='post' class="comment-form">
+                                <textarea name='comment' placeholder='Leave a comment...' required></textarea>
+                                <input type='hidden' name='event_id' value='<?= $row['id'] ?>'>
+                                <button type='submit'>Add Comment</button>
+                            </form>
+                        <?php if ($_SESSION['user_id'] == $row['user_id']) { ?>
+                            <div class="event-actions">
+                                <a href='edit_event.php?id=<?= $row['id'] ?>' class="edit-btn">Edit</a>
+                                <a href='delete_event.php?id=<?= $row['id'] ?>' class="delete-btn">Delete</a>
                             </div>
                         <?php } ?>
                     </div>
-                <?php } else { ?>
-                    <p>There are no events for the selected date.</p>
                 <?php } ?>
             </div>
-        </section>
+        <?php } else { ?>
+            <p>There are no events for the selected date.</p>
+        <?php } ?>
     </div>
+</section>
+
+
+ 
 </body>
 </html>
 
 
 
-
+<script src="script.js"></script>
 </body>
 </html>

@@ -4,7 +4,7 @@ include 'config/db.php'; // Conectează-te la baza de date
 
 // Verificăm dacă utilizatorul este autentificat
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
+    echo json_encode(['status' => 'error', 'message' => 'Not logged in']);
     exit();
 }
 
@@ -12,7 +12,7 @@ if (!isset($_SESSION['user_id'])) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Verificăm dacă variabilele există și sunt valide
     if (!isset($_POST['event_id'], $_POST['comment'])) {
-        echo "Datele sunt incomplete!";
+        echo json_encode(['status' => 'error', 'message' => 'Incomplete data']);
         exit();
     }
 
@@ -22,11 +22,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Verificăm dacă datele sunt valide
     if (!$event_id) {
-        echo "ID-ul evenimentului este invalid!";
+        echo json_encode(['status' => 'error', 'message' => 'Invalid event ID']);
         exit();
     }
     if (empty($comment)) {
-        echo "Comentariul nu poate fi gol!";
+        echo json_encode(['status' => 'error', 'message' => 'Comment cannot be empty']);
         exit();
     }
 
@@ -42,14 +42,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Executăm interogarea
         if ($stmt->execute()) {
-            // Redirectăm utilizatorul înapoi la pagina de detalii a evenimentului
-            header("Location: event_details.php?id=$event_id");
-            exit();
+            // Răspundem cu succes și returnăm comentariul adăugat
+            echo json_encode([
+                'status' => 'success',
+                'comment' => htmlspecialchars($comment),
+                'user_id' => $user_id
+            ]);
         } else {
-            echo "Eroare la adăugarea comentariului!";
+            echo json_encode(['status' => 'error', 'message' => 'Error adding comment']);
         }
     } catch (PDOException $e) {
-        echo "Eroare la interogare: " . $e->getMessage();
+        echo json_encode(['status' => 'error', 'message' => 'Query error: ' . $e->getMessage()]);
     }
 }
 ?>
