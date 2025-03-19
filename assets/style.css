@@ -11,7 +11,9 @@ body {
   max-width: 1392px;
   margin: 0 auto;
 }
-
+.header{
+  padding-bottom: 80px;
+}
 .nav__bar {
   display: flex;
   align-items: center;
@@ -440,8 +442,8 @@ button:hover {
 
 /* Stil general pentru container */
 .events-info {
-  max-width: 400px;
-  margin: 50px auto;
+  width: 400px;
+
   padding: 20px;
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 8px;
@@ -452,7 +454,7 @@ button:hover {
 }
 
 .img-event {
-  width: 500px;
+  width: 400px;
   height: auto;
   border-radius: 25px;
 }
@@ -532,18 +534,22 @@ button:hover {
 }
 
 /* Container pentru secțiunea evenimentelor */
-
+.events-section {
+  margin-bottom: 55px;
+}
 .events-main {
-  display: flex;
+  /* display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 25px;
+  justify-content: space-between; */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px;
 }
 .events-main__header {
   display: flex;
   flex-direction: column;
 
-  max-width: 500px;
+  max-width: 450px;
 }
 
 .events-main__title {
@@ -576,41 +582,17 @@ button:hover {
   line-height: 6mm;
 }
 
-
-
-
 /*events postari*/
-
-.events-container{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-.event-card {
-  position: relative;
-  background: white;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease-in-out;
-  flex: 1 1 calc(33.333% - 20px); /* Pe desktop, cardurile vor fi aranjate pe 3 coloane */
-  margin-bottom: 20px; /* Adăugăm o margine pentru a separa cardurile */
-}
-
-.event-card:hover {
-  transform: scale(1.02); /* Efect de hover */
-}
 
 .events-title {
   font-size: 24px;
   font-weight: bold;
-  color: #0077b6;
+  color: #000000;
 }
 
 .event-description {
-  font-size: 16px;
-  color: #333;
+  font-size: 18px;
+  color: #000000;
   margin: 10px 0;
 }
 
@@ -619,67 +601,84 @@ button:hover {
   color: #555;
 }
 /*experiment coment*/
-/* Stil pentru a fixa butonul de comentarii jos */
-.comment-form {
 
-  width: 95%; /* Lățime completă */
+/* Stil pentru formularul de comentarii */
+.comment-form {
+  position: relative;
   padding: 10px;
   background-color: white;
-  border: 1px solid #ccc;
-  margin-top: 10px;
-}
-/* Stil pentru secțiunea de comentarii */
-.comments-section {
-
-  max-height: 200px; /* Poți ajusta înălțimea în funcție de nevoile tale */
-  overflow-y: auto;  /* Adaugă scroll pe verticală */
-  padding: 10px;
-  border: 1px solid #ccc;
+  border-top: 1px solid #ccc;
   margin-top: 20px;
 }
 
-
-/* Stil pentru comentarii */
-.comment {
-  background: #f9f9f9;
-  padding: 10px;
-  border-radius: 5px;
-  margin-bottom: 5px;
-}
-
-
-
-
-
-/*//////////////////*/
-.comments-section {
-  margin-top: 15px;
-  padding-top: 10px;
-  border-top: 1px solid #ddd;
-}
-
-.comment {
-  background: #f9f9f9;
-  padding: 10px;
-  border-radius: 5px;
-  margin-bottom: 5px;
-}
 .comment-form textarea {
-  width: 100%; /* Lățime completă */
-  height: 60px; /* Înălțimea textarea-ului */
+  width: 100%;
+  height: 60px;
   margin-bottom: 10px;
 }
 
-
 .comment-form button {
-  width: 100%; /* Lățime completă pentru buton */
+  width: 100%;
   padding: 10px;
-  background-color: #4CAF50; /* Culoare de fundal pentru buton */
+background-color:#003366;
   color: white;
   border: none;
   cursor: pointer;
-  font-size: 16px;
 }
+
+/* Stil pentru secțiunea de comentarii */
+.card-title {
+  font-size: 5rem;
+  display: flex;
+  justify-content: center;
+  background-image: linear-gradient(
+    to right,
+    rgb(255, 255, 255),
+    rgb(83, 83, 83)
+  ); /* Gradient de la roșu la albastru */
+  -webkit-background-clip: text; /* Aplică gradientul pe text */
+  color: transparent; /* Face textul transparent, pentru a lăsa gradientul să fie vizibil */
+}
+
+.events-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  row-gap: 40px;
+}
+.event-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 8px;
+  background: linear-gradient(133deg, #f8f8f8 0%, #91b7d4 100%);
+  height: 100%;
+}
+
+.comments-section {
+  max-height: 50px; /* Poți ajusta înălțimea pentru a se potrivi mai bine cu designul tău */
+  overflow-y: auto; /* Adaugă scroll pe verticală atunci când numărul de comentarii este prea mare */
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.coments-action {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+/* Stil pentru comentarii */
+.comment {
+  margin-bottom: 10px;
+}
+
+.comment p {
+  margin: 0;
+}
+
 .comment-form button:hover {
   background-color: #45a049; /* Culoare mai închisă la hover */
 }
@@ -700,7 +699,7 @@ button:hover {
 }
 
 .edit-btn {
-  background: #28a745;
+  background: #282aa7;
   color: white;
 }
 
@@ -717,4 +716,11 @@ button:hover {
   background: #c82333;
 }
 
+
+.no-events{
+  color: rgb(255, 255, 255);
+ display: flex;
+ justify-content: center;
+ font-size: 35px;
+}
 /* Responsive Design */

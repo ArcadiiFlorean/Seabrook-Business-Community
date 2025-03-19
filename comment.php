@@ -1,18 +1,18 @@
 <?php
 session_start();
-include 'config/db.php'; // Conectează-te la baza de date
+include 'config/db.php'; // Verifică dacă calea către db.php este corectă
 
 // Verificăm dacă utilizatorul este autentificat
-if (!isset($_SESSION['user_id'])) {
-    echo json_encode(['status' => 'error', 'message' => 'Not logged in']);
+if (!$pdo) {
+    echo json_encode(['status' => 'error', 'message' => 'Database connection failed']);
     exit();
 }
 
-// Verificăm dacă formularul a fost trimis
+// Verificăm dacă formularul a fost trimis prin POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Verificăm dacă variabilele există și sunt valide
     if (!isset($_POST['event_id'], $_POST['comment'])) {
-        echo json_encode(['status' => 'error', 'message' => 'Incomplete data']);
+        $_SESSION['message'] = 'Date incomplete!';
+        header('Location: events.php'); // Redirecționează utilizatorul la pagina de evenimente
         exit();
     }
 
@@ -20,39 +20,54 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $comment = trim($_POST['comment']);
     $user_id = $_SESSION['user_id'];
 
-    // Verificăm dacă datele sunt valide
     if (!$event_id) {
-        echo json_encode(['status' => 'error', 'message' => 'Invalid event ID']);
+        $_SESSION['message'] = 'ID-ul evenimentului este invalid!';
+        header('Location: events.php'); // Redirecționează utilizatorul la pagina de evenimente
         exit();
     }
     if (empty($comment)) {
-        echo json_encode(['status' => 'error', 'message' => 'Comment cannot be empty']);
+        $_SESSION['message'] = 'Comentariul nu poate fi gol!';
+        header('Location: events.php'); // Redirecționează utilizatorul la pagina de evenimente
         exit();
     }
 
     try {
+        // Obține numele utilizatorului
+        $user_stmt = $pdo->prepare("SELECT username FROM users WHERE id = :user_id");
+        $user_stmt->execute(['user_id' => $user_id]);
+        $user = $user_stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$user) {
+            $_SESSION['message'] = 'Utilizatorul nu a fost găsit!';
+            header('Location: events.php'); // Redirecționează utilizatorul la pagina de evenimente
+            exit();
+        }
+
         // Pregătim interogarea SQL pentru a adăuga comentariul
         $sql = "INSERT INTO comments (event_id, user_id, comment) VALUES (:event_id, :user_id, :comment)";
         $stmt = $pdo->prepare($sql);
 
-        // Legăm parametrii
+        // Bind params and check for errors
         $stmt->bindParam(':event_id', $event_id, PDO::PARAM_INT);
         $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
         $stmt->bindParam(':comment', $comment, PDO::PARAM_STR);
 
-        // Executăm interogarea
+        // Execute and check result
         if ($stmt->execute()) {
-            // Răspundem cu succes și returnăm comentariul adăugat
-            echo json_encode([
-                'status' => 'success',
-                'comment' => htmlspecialchars($comment),
-                'user_id' => $user_id
-            ]);
+            $_SESSION['message'] = 'Comentariul a fost adăugat cu succes!';
+            header('Location: events.php'); // Redirecționează utilizatorul la pagina de evenimente
+            exit(); // Oprește execuția scriptului după redirecționare
         } else {
-            echo json_encode(['status' => 'error', 'message' => 'Error adding comment']);
+            // Logging for debugging
+            $errorInfo = $stmt->errorInfo();
+            $_SESSION['message'] = 'Eroare la adăugarea comentariului: ' . implode(', ', $errorInfo);
+            header('Location: events.php'); // Redirecționează utilizatorul la pagina de evenimente
+            exit();
         }
     } catch (PDOException $e) {
-        echo json_encode(['status' => 'error', 'message' => 'Query error: ' . $e->getMessage()]);
+        $_SESSION['message'] = 'Eroare la interogare: ' . $e->getMessage();
+        header('Location: events.php'); // Redirecționează utilizatorul la pagina de evenimente
+        exit();
     }
 }
 ?>
