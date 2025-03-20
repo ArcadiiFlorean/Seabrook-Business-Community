@@ -24,12 +24,6 @@ if (!$event) {
     exit();
 }
 
-// Încearcă să ștergi evenimentul doar dacă utilizatorul este autorul evenimentului
-if ($event['user_id'] != $_SESSION['user_id']) {
-    header('Location: events.php?error=no_permission_to_delete');
-    exit();
-}
-
 // Șterge evenimentul
 $stmt = $pdo->prepare("DELETE FROM events WHERE id = :id AND user_id = :user_id");
 $stmt->execute(['id' => $event_id, 'user_id' => $_SESSION['user_id']]);

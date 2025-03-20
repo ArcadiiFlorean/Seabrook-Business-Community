@@ -160,6 +160,9 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <input type="datetime-local" id="date" name="date" class="events-form__input" required>
                         </div>
                         <button type="submit" name="add_event" class="events-form__button">Add Event</button>
+                        <div id="error-modal" class="modal">
+  
+</div>
                     </form>
                 </div>
 
@@ -207,6 +210,11 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <div class="event-actions">
     <a href='edit_event.php?id=<?= $row['id'] ?>' class="btn edit-btn">Edit</a>
     <a href='delete_event.php?id=<?= $row['id'] ?>' class="btn delete-btn">Delete</a>
+   
+
+
+
+ 
 </div>
 
 
@@ -237,12 +245,7 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <p class="footer__text">&copy; 2025 Seabrook Community</p>
     </footer>
 <!-- Error Modal -->
-<div id="error-modal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <p id="modal-message">Error message here...</p>
-    </div>
-</div>
+
 
 </body>
 </html>

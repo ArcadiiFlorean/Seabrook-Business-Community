@@ -55,3 +55,6 @@ function loadComments(eventId) {
   .catch((error) => console.error("Error loading comments:", error));
 }
 
+//close delete-message
+// Clic pe "×" pentru a închide mesajul
+// Afișează butonul "Close" doar pentru evenimentul pe care ai făcut clic
