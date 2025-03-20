@@ -441,6 +441,21 @@ button:hover {
 /*events*/
 
 /* Stil general pentru container */
+.events__logout-button {
+  background-color: transparent;
+  color: rgb(255, 255, 255); /* Text alb */
+  padding: 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s;
+}
+
+.events__logout-button:hover {
+  color: #ff0000; /* Text gri închis pentru a fi mai ușor de citit pe fundalul alb */
+  background-color: transparent; /* Fundal alb-gri deschis pentru un efect plăcut */
+}
+
 .events-info {
   width: 400px;
 
@@ -496,7 +511,7 @@ button:hover {
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 4px;
   background: transparent;
-  color: white;
+  color: rgb(255, 255, 255);
   font-size: 16px;
   outline: none;
 }
@@ -607,21 +622,14 @@ button:hover {
   background-color: white;
   border-top: 1px solid #ccc;
   margin-top: 20px;
+  border-radius: 10px;
 }
 
 .comment-form textarea {
-  width: 100%;
+  width: 98%;
   height: 60px;
   margin-bottom: 10px;
-}
-
-.comment-form button {
-  width: 100%;
-  padding: 10px;
-  background-color: #003366;
-  color: white;
-  border: none;
-  cursor: pointer;
+  border-radius: 10px;
 }
 
 /* Stil pentru secțiunea de comentarii */
@@ -662,6 +670,8 @@ button:hover {
   border: 1px solid #ccc;
   margin-top: 20px;
   margin-bottom: 10px;
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255);
 }
 .coments-action {
   display: flex;
@@ -676,17 +686,60 @@ button:hover {
 .comment p {
   margin: 0;
 }
+.comment-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #000aff;
+  border: none;
+  cursor: pointer;
+  color: white; /* Setează culoarea textului la alb */
+  
+  /* Aplică tranziții pe fundal și pe culoarea textului */
+  transition: 0.3s ease, color 0.3s ease;
+}
 
 .comment-form button:hover {
-  background-color: #45a049; /* Culoare mai închisă la hover */
+background-color: #388efe;
+  color: white; /* Culoarea textului rămâne albă, dar tranziția pe fundal va fi evidentă */
 }
 
 .event-actions {
   display: flex;
-  gap: 10px;
+  gap: 5px;
   margin-top: 15px;
-  background-color: #50b2fd;
 }
+
+/* Stilizare pentru containerul .event-actions */
+
+.btn {
+  display: inline-block;
+  padding: 8px 12px;
+  text-decoration: none;
+  font-size: 14px;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.edit-btn {
+  background-color: #007bff;
+  color: white;
+  border: 1px solid #007bff;
+}
+
+.edit-btn:hover {
+  background-color: #0056b3;
+}
+
+.delete-btn {
+  background-color: #dc3545;
+  color: white;
+  border: 1px solid #dc3545;
+}
+
+.delete-btn:hover {
+  background-color: #a71d2a;
+}
+/* Stilizare pentru link-ul de editare */
 
 .no-events {
   color: rgb(255, 255, 255);
@@ -694,4 +747,120 @@ button:hover {
   justify-content: center;
   font-size: 35px;
 }
-/* Responsive Design */
+/*edit_event*/
+
+.edit-events-content {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 30px;
+  background: linear-gradient(133deg, #ffffff 0%, #91b7d4 100%);
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+}
+
+.edit-events-title {
+font-family: Arial, Helvetica, sans-serif;
+  font-size: 2.4rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.success-message {
+  color: #000000;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.error-message {
+  color: #dc3545;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.edit-form-error {
+  color: #dc3545;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.edit-form-container {
+  background: linear-gradient(133deg, #e5e5e5 0%, #7491a8 100%);
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  display: inline-block;
+  text-align: left;
+  width: 90%;
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-label {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.form-input {
+  width: 95%;
+  padding: 14px;
+  margin: 8px 0;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: rgba(245, 245, 245, 0.8); /* Transparent background for input */
+  transition: background-color 0.3s ease;
+}
+
+.form-input:focus {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-color: #007bff;
+  outline: none;
+}
+
+.form-button {
+  background: #007bff;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.form-button:hover {
+  background: #0056b3;
+}
+
+.form-button:disabled {
+  background: #dcdcdc;
+  cursor: not-allowed;
+}
+
+.back-button {
+  display: inline-block;
+  padding: 12px 18px;
+  background-color: rgba(240, 240, 240, 0.8); /* Transparent background for back button */
+  color: #333;
+  text-decoration: none;
+  border-radius: 6px;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: rgba(224, 224, 224, 0.8); /* Lighter transparent effect */
+}

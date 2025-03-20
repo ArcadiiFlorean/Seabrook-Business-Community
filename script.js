@@ -54,3 +54,4 @@ function loadComments(eventId) {
   })
   .catch((error) => console.error("Error loading comments:", error));
 }
+

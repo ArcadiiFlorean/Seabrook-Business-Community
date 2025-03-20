@@ -24,7 +24,7 @@ if (!isset($_SESSION['user_id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Access Restricted</title>
-    <link rel="stylesheet" href="assets/index.css"> 
+    <link rel="stylesheet" href="assets/style.css"> 
 </head>
 <body>
 
@@ -109,6 +109,7 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Evenimente</title>
     <link rel="stylesheet" href="assets/style.css">
+
 </head>
 <body>
 
@@ -204,9 +205,10 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             </div>
 
                             <div class="event-actions">
-                                <a href='edit_event.php?id=<?= $row['id'] ?>'>Edit</a>
-                                <a href='delete_event.php?id=<?= $row['id'] ?>'>Delete</a>
-                            </div>
+    <a href='edit_event.php?id=<?= $row['id'] ?>' class="btn edit-btn">Edit</a>
+    <a href='delete_event.php?id=<?= $row['id'] ?>' class="btn delete-btn">Delete</a>
+</div>
+
 
                            </div>
                             
@@ -234,6 +236,16 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <footer class="footer-events">
         <p class="footer__text">&copy; 2025 Seabrook Community</p>
     </footer>
+<!-- Error Modal -->
+<div id="error-modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p id="modal-message">Error message here...</p>
+    </div>
+</div>
+
+</body>
+</html>
 
 </body>
 </html>

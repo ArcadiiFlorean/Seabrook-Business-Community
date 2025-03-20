@@ -4,12 +4,12 @@ include 'config/db.php';
 
 // Verifică dacă utilizatorul este conectat
 if (!isset($_SESSION['user_id'])) {
-    echo "Trebuie să te autentifici pentru a șterge un eveniment!";
+    header('Location: events.php?error=not_logged_in');
     exit();
 }
 
 if (!isset($_GET['id'])) {
-    echo "ID-ul evenimentului nu a fost specificat.";
+    header('Location: events.php?error=no_event_id');
     exit();
 }
 
@@ -18,14 +18,23 @@ $stmt = $pdo->prepare("SELECT * FROM events WHERE id = :id AND user_id = :user_i
 $stmt->execute(['id' => $event_id, 'user_id' => $_SESSION['user_id']]);
 $event = $stmt->fetch(PDO::FETCH_ASSOC);
 
+// Verifică dacă evenimentul există și dacă utilizatorul are permisiunea de a-l șterge
 if (!$event) {
-    echo "Evenimentul nu a fost găsit sau nu aveți permisiunea să-l ștergeți.";
+    header('Location: events.php?error=not_found_or_no_permission');
     exit();
 }
 
-// Ștergem evenimentul
+// Încearcă să ștergi evenimentul doar dacă utilizatorul este autorul evenimentului
+if ($event['user_id'] != $_SESSION['user_id']) {
+    header('Location: events.php?error=no_permission_to_delete');
+    exit();
+}
+
+// Șterge evenimentul
 $stmt = $pdo->prepare("DELETE FROM events WHERE id = :id AND user_id = :user_id");
 $stmt->execute(['id' => $event_id, 'user_id' => $_SESSION['user_id']]);
 
-echo "Evenimentul a fost șters cu succes!";
+// Redirecționează utilizatorul la lista de evenimente cu un mesaj de succes
+header('Location: events.php?success=1');
+exit();
 ?>
