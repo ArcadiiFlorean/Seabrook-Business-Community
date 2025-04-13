@@ -1,18 +1,42 @@
-html,
+/* html,
 body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background: linear-gradient(135deg, #000000, #7d9fda);
-  background-attachment: fixed;
+  /* background: linear-gradient(135deg, #000000, #7d9fda);
+  background-attachment: fixed; 
+  background-image: url(../img/Group\ 124.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+} */
+
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-image: url(../img/Group\ 124.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* Dacă dorești ca imaginea să rămână fixă când derulezi */
+  display: flex;
+  flex-direction: column; /* Asigură-te că elementele din body sunt plasate pe verticală */
 }
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Adaugă un spațiu între elementele din body, dacă ai nevoie */
+}
+
+
 
 .container {
   max-width: 1392px;
   margin: 0 auto;
 }
 .header {
-  padding-bottom: 80px;
+  /* padding-bottom: 80px; */
 }
 .nav__bar {
   display: flex;
@@ -88,6 +112,7 @@ body {
   background: linear-gradient(to right, #ffffff, #0077b6);
   -webkit-background-clip: text;
   color: transparent;
+  max-width: 700px;
 }
 .highlight {
   font-size: 66px;
@@ -140,6 +165,7 @@ body {
 .section-events {
   display: flex;
 }
+
 .message {
   margin: 50px auto;
   padding: 20px;
@@ -231,6 +257,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+
 }
 
 .login-content {
@@ -386,7 +413,12 @@ body {
   margin-bottom: 60px;
   text-align: center;
 }
+.register-form{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 
+}
 input[type="text"],
 input[type="password"],
 input[type="email"] {
@@ -446,6 +478,7 @@ button:hover {
   color: rgb(255, 255, 255); /* Text alb */
   padding: 12px;
   border-radius: 4px;
+  border:1px solid  #007bff;
   cursor: pointer;
   font-size: 18px;
   transition: background-color 0.3s;
@@ -454,6 +487,7 @@ button:hover {
 .events__logout-button:hover {
   color: #ff0000; /* Text gri închis pentru a fi mai ușor de citit pe fundalul alb */
   background-color: transparent; /* Fundal alb-gri deschis pentru un efect plăcut */
+  border: 1px solid red;
 }
 
 .events-info {
@@ -564,7 +598,10 @@ button:hover {
   display: flex;
   flex-direction: column;
 }
-
+.events-main ul li {
+  color: rgb(190, 190, 190);
+  font-family: 18px;
+}
 .events-main__title {
   font-weight: 400;
   font-size: 55px;
@@ -575,6 +612,29 @@ button:hover {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+.benefits-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.benefit-item {
+  margin-bottom: 10px;
+}
+
+.benefit-link {
+  text-decoration: none;
+  color: #88bcff; /* Modifică culoarea după necesități */
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.benefit-link:hover {
+  color: #d6e5f5; /* Culoare mai închisă la hover */
+}
+
+
+
 
 .events-main__paragraph {
   font-weight: 400;
@@ -646,7 +706,23 @@ button:hover {
   -webkit-background-clip: text; /* Aplică gradientul pe text */
   color: transparent; /* Face textul transparent, pentru a lăsa gradientul să fie vizibil */
 }
+.search-section{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 60px;
 
+}
+
+.search-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px;
+ 
+  border-radius: 8px; 
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); 
+}
 .events-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

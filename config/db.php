@@ -1,14 +1,13 @@
 <?php
-$host = 'localhost';
+$host = 'localhost'; // sau adresa serverului MySQL
 $dbname = 'seabrook_community';
-$username = 'root'; // Folosește utilizatorul tău de bază de date
-$password = ''; // Folosește parola ta pentru baza de date, dacă este cazul
+$username = 'root'; // sau utilizatorul tău
+$password = ''; // parola (dacă există)
 
 try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
-    echo 'Conectare eșuată: ' . $e->getMessage();
-    exit();
+    die("Eroare la conectare: " . $e->getMessage());
 }
 ?>

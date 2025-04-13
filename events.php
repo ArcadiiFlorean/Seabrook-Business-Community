@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 include 'config/db.php'; // Include fișierul de conectare la baza de date
 
@@ -29,15 +29,17 @@ if (!isset($_SESSION['user_id'])) {
 <body>
 
     <main class="container">
-        
+  
         <section class="section-events">
             <div class="message message--error">
-                <h1 class="message__title">We apologize for the inconvenience!</h1>
-                <p class="message__text">Please sign in to explore upcoming events and stay updated with the latest news</p>
+            <h1 class="message__title">We're sorry for the inconvenience.</h1>
+<p class="message__text">Please sign in to explore upcoming events and stay up to date with the latest news.</p>
+
                 <a href="login.php" class="message__button" role="button">Login</a>
             </div>
 
             <div class="img-grid">
+     
                 <div class="container-grid">
                     <img class="img-grid-list" src="./img/group1.png" alt="Seabrook cityscape">
                     <img class="img-grid-list" src="./img/group2.png" alt="Community gathering in Seabrook">
@@ -66,40 +68,57 @@ if (!isset($_SESSION['user_id'])) {
 $events = [];
 
 // Adăugare eveniment
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_event'])) {
-    $title = trim($_POST['title']);
-    $description = trim($_POST['description']);
-    $date = $_POST['date'];
-    $user_id = $_SESSION['user_id'];
+// Verifică dacă este trimis un comentariu
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_comment'])) {
+    $comment = trim($_POST['comment']);
+    $event_id = $_POST['event_id'];
+    $user_id = $_SESSION['user_id'];  // Sau folosește altă metodă pentru a prelua numele utilizatorului (dacă este necesar)
+    $user_name = 'User Name';  // Aici poți adăuga logica pentru a obține numele utilizatorului
 
-    if (empty($title) || empty($description) || empty($date)) {
-        echo "<script>alert('Toate câmpurile sunt obligatorii!');</script>";
+    if (empty($comment)) {
+        echo "<script>alert('Comentariul nu poate fi gol!');</script>";
     } else {
         try {
-            $stmt = $pdo->prepare("INSERT INTO events (title, description, date, user_id) VALUES (:title, :description, :date, :user_id)");
+            // Salvează comentariul în baza de date
+            $stmt = $pdo->prepare("INSERT INTO comments (event_id, user_id, user_name, comment_text, created_at) VALUES (:event_id, :user_id, :user_name, :comment_text, NOW())");
             $stmt->execute([
-                'title' => $title,
-                'description' => $description,
-                'date' => $date,
-                'user_id' => $user_id
+                'event_id' => $event_id,
+                'user_id' => $user_id,
+                'user_name' => $user_name,
+                'comment_text' => $comment
             ]);
-            // Elimină linia cu alertul de succes
         } catch (PDOException $e) {
             echo "<script>alert('A apărut o eroare: " . $e->getMessage() . "');</script>";
         }
     }
 }
 
-
 // Obține evenimentele
-if (isset($_GET['event_date'])) {
-    $selected_date = $_GET['event_date'];
-    $stmt = $pdo->prepare("SELECT * FROM events WHERE DATE(date) = :event_date ORDER BY date DESC");
-    $stmt->execute(['event_date' => $selected_date]);
-} else {
-    $stmt = $pdo->query("SELECT * FROM events ORDER BY date DESC");
+$search = isset($_GET['search']) ? $_GET['search'] : '';
+$event_date = isset($_GET['event_date']) ? $_GET['event_date'] : '';
+
+// Filtrare după search și date
+$query = "SELECT * FROM events WHERE 1=1"; // Query default
+if (!empty($search)) {
+    $query .= " AND (title LIKE :search OR description LIKE :search)";
 }
+if (!empty($event_date)) {
+    $query .= " AND DATE(event_date) = :event_date"; // Folosește event_date
+}
+$query .= " ORDER BY event_date DESC"; // Folosește event_date
+
+$stmt = $pdo->prepare($query);
+$params = [];
+if (!empty($search)) {
+    $params['search'] = "%$search%";
+}
+if (!empty($event_date)) {
+    $params['event_date'] = $event_date;
+}
+
+$stmt->execute($params);
 $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <!DOCTYPE html>
@@ -109,7 +128,6 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Evenimente</title>
     <link rel="stylesheet" href="assets/style.css">
-
 </head>
 <body>
 
@@ -136,11 +154,12 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <div class="events-main__header">
                     <h1 class="events-main__title">Submit Your Event to Our Platform</h1>
                     <p class="events-main__paragraph">This is where you can add and manage your events with ease.</p>
-                    <ul class="events-main__benefits">
-                        <li>Expand your audience by reaching a wider community.</li>
-                        <li>Increase visibility of your events and attract more participants.</li>
-                        <li>Network with professionals and organizations supporting your business.</li>
-                        <li>Easy management of events, keeping everything in one place.</li>
+                    <ul class="benefits-list">
+                        <li class="benefit-item"><a href="#" class="benefit-link">Expand Your Network – Connect with local professionals.</a></li>
+                        <li class="benefit-item"><a href="#" class="benefit-link">Showcase Your Business – Increase visibility and attract partners.</a></li>
+                        <li class="benefit-item"><a href="#" class="benefit-link">Engage Locally – Contribute to Seabrook’s growth.</a></li>
+                        <li class="benefit-item"><a href="#" class="benefit-link">Boost Attendance – Reach a targeted audience.</a></li>
+                        <li class="benefit-item"><a href="#" class="benefit-link">Access Resources – Leverage local support for success.</a></li>
                     </ul>
                 </div>
 
@@ -160,95 +179,54 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <input type="datetime-local" id="date" name="date" class="events-form__input" required>
                         </div>
                         <button type="submit" name="add_event" class="events-form__button">Add Event</button>
-                        <div id="error-modal" class="modal">
-  
-</div>
                     </form>
                 </div>
 
-                <img class="img-event" src="./img/eventsimg.png" alt="Group image">
+                <img class="img-event" src="./img/group6.png" alt="Group image">
             </div>
         </div>
-
-        
     </section>
- 
+
     <section id="events">
-  <h1 class="card-title">Upcoming Events</h1>
+        <h1 class="card-title">Upcoming Events</h1>
         <div class="container">
-            <?php if (!empty($events)) { ?>
-                <div class="events-container">
-                    <?php foreach ($events as $row) { ?>
-                        <div class="event-card">
-                            <div class="event-content">
-                                <h3 class="events-title"><?= htmlspecialchars($row['title'], ENT_QUOTES, 'UTF-8') ?></h3>
-                                <p class="event-description"><?= nl2br(htmlspecialchars(truncateDescription($row['description'], $maxLength), ENT_QUOTES, 'UTF-8')) ?></p>
-                                <p class="date"><em>Date: <?= htmlspecialchars($row['date'], ENT_QUOTES, 'UTF-8') ?></em></p>
+            <section class="search-section">
+                <form class="search-form" method="GET" action="events.php">
+                    <input type="text" name="search" placeholder="Search Events..." class="search-input">
+                    <input type="date" name="event_date" class="search-input">
+                    <button type="submit" class="search-btn">Search</button>
+                </form>
+            </section>
+
+            <div class="container">
+                <?php if (!empty($events)) { ?>
+                    <div class="events-container">
+                        <?php foreach ($events as $row) { ?>
+                            <div class="event-card">
+                                <div class="event-content">
+                                    <h3 class="events-title"><?= htmlspecialchars($row['title'], ENT_QUOTES, 'UTF-8') ?></h3>
+                                    <p class="event-description"><?= nl2br(htmlspecialchars(truncateDescription($row['description'], $maxLength), ENT_QUOTES, 'UTF-8')) ?></p>
+                                    <p class="date"><em>Date: <?= htmlspecialchars(date('d-m-Y', strtotime($row['event_date'])), ENT_QUOTES, 'UTF-8') ?></em></p>
+
+
+                                </div>
+
+                                <div class="comments-section" id="comments-<?= $row['event_id'] ?>">
+                                    <!-- Comments go here -->
+                                </div>
                             </div>
-
-                      
-                      <div class="comments-section" id="comments-<?= $row['id'] ?>">
-                                <?php 
-                                $comments_stmt = $pdo->prepare("SELECT comments.*, users.username FROM comments JOIN users ON comments.user_id = users.id WHERE comments.event_id = :event_id ORDER BY comments.created_at DESC");
-                                $comments_stmt->execute(['event_id' => $row['id']]);
-
-                                while ($comment = $comments_stmt->fetch(PDO::FETCH_ASSOC)) { ?>
-                                    <div class='comment'>
-                                        <p><strong><?= htmlspecialchars($comment['username'], ENT_QUOTES, 'UTF-8') ?>:</strong> <?= htmlspecialchars($comment['comment'], ENT_QUOTES, 'UTF-8') ?></p>
-                                    </div>
-                                <?php } ?>
-                            </div>
-                           <div class="coments-action">
-                            <div class="comment-form">
-                                <form action='comment.php' method='post'>
-                                    <textarea name='comment' placeholder='Leave a comment...' required></textarea>
-                                    <input type='hidden' name='event_id' value='<?= $row['id'] ?>'>
-                                    <button  type='submit'>Add Comment</button>
-                                </form>
-                            </div>
-
-                            <div class="event-actions">
-    <a href='edit_event.php?id=<?= $row['id'] ?>' class="btn edit-btn">Edit</a>
-    <a href='delete_event.php?id=<?= $row['id'] ?>' class="btn delete-btn">Delete</a>
-   
-
-
-
- 
-</div>
-
-
-                           </div>
-                            
-
-
-
-                        </div>
-
-                      
-
-
-
-
-
-
-
-                    <?php } ?>
-                </div>
-            <?php } else { ?>
-                <p class="no-events">No events found.</p>
-            <?php } ?>
+                        <?php } ?>
+                    </div>
+                <?php } else { ?>
+                    <p>No events found.</p>
+                <?php } ?>
+            </div>
         </div>
     </section>
-    
-    <footer class="footer-events">
-        <p class="footer__text">&copy; 2025 Seabrook Community</p>
+
+    <footer class="footer">
+        <p>&copy; 2025 Seabrook Community</p>
     </footer>
-<!-- Error Modal -->
-
-
-</body>
-</html>
 
 </body>
 </html>

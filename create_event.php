@@ -1,7 +1,7 @@
 <?php
 session_start();
 include('includes/header.php');
-include 'config/db.php'; // Dacă db.php este într-un subfolder "config"
+include 'config/db.php'; // Acest fișier definește variabila $pdo
 
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
@@ -9,17 +9,28 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $title = mysqli_real_escape_string($conn, $_POST['title']);
-    $description = mysqli_real_escape_string($conn, $_POST['description']);
+    $title = $_POST['title'];
+    $description = $_POST['description'];
     $date = $_POST['date'];
-    $user_id = $_SESSION['user_id'];  // ID-ul utilizatorului logat
+    $user_id = $_SESSION['user_id'];
 
-    $query = "INSERT INTO events (title, description, date, user_id) VALUES ('$title', '$description', '$date', '$user_id')";
-    if (mysqli_query($conn, $query)) {
-        echo "Evenimentul a fost creat cu succes!";
-        header("Location: index.php");  // Redirecționează utilizatorul către pagina principală
-    } else {
-        echo "Eroare la crearea evenimentului: " . mysqli_error($conn);
+    try {
+        $query = "INSERT INTO events (title, description, date, user_id) VALUES (:title, :description, :date, :user_id)";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(':title', $title);
+        $stmt->bindParam(':description', $description);
+        $stmt->bindParam(':date', $date);
+        $stmt->bindParam(':user_id', $user_id);
+
+        if ($stmt->execute()) {
+            echo "Evenimentul a fost creat cu succes!";
+            header("Location: index.php");
+            exit();
+        } else {
+            echo "Eroare la crearea evenimentului.";
+        }
+    } catch (PDOException $e) {
+        echo "Eroare SQL: " . $e->getMessage();
     }
 }
 ?>
@@ -30,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <input type="text" name="title" placeholder="Titlu Eveniment" required><br>
         <textarea name="description" placeholder="Descriere" required></textarea><br>
         <input type="date" name="date" required><br>
-        <button type="submit">Crează </button>
+        <button type="submit">Crează</button>
     </form>
 </main>
 
