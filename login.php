@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Verifică dacă utilizatorul a fost găsit
     if ($user) {
         // Verifică dacă parola introdusă este corectă
-        if (password_verify($password, $user['password_hash'])) {
+        if (password_verify($password, $user['password'])) {
             // Parola este corectă, autentificare reușită
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['username'];
@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         echo "Utilizatorul nu există.<br>";
     }
-}
+} // ← aceasta era acolada lipsă
 ?>
 
 <!DOCTYPE html>

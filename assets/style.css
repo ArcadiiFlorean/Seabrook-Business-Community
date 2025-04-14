@@ -10,8 +10,8 @@ body {
   background-repeat: no-repeat;
 } */
 
-
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -28,8 +28,6 @@ body {
   flex-direction: column;
   justify-content: space-between; /* Adaugă un spațiu între elementele din body, dacă ai nevoie */
 }
-
-
 
 .container {
   max-width: 1392px;
@@ -257,7 +255,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
 
 .login-content {
@@ -381,10 +378,16 @@ body {
 }
 
 .register-content {
-  display: flex;
+
   align-items: center;
   justify-content: center;
   gap: 35px;
+}
+.form-register-content {
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+  gap: 25px;
 }
 
 .register-info {
@@ -413,11 +416,10 @@ body {
   margin-bottom: 60px;
   text-align: center;
 }
-.register-form{
+.register-form {
   display: flex;
   flex-direction: column;
   gap: 10px;
-
 }
 input[type="text"],
 input[type="password"],
@@ -478,7 +480,7 @@ button:hover {
   color: rgb(255, 255, 255); /* Text alb */
   padding: 12px;
   border-radius: 4px;
-  border:1px solid  #007bff;
+  border: 1px solid #007bff;
   cursor: pointer;
   font-size: 18px;
   transition: background-color 0.3s;
@@ -633,9 +635,6 @@ button:hover {
   color: #d6e5f5; /* Culoare mai închisă la hover */
 }
 
-
-
-
 .events-main__paragraph {
   font-weight: 400;
   font-size: 20px;
@@ -706,12 +705,11 @@ button:hover {
   -webkit-background-clip: text; /* Aplică gradientul pe text */
   color: transparent; /* Face textul transparent, pentru a lăsa gradientul să fie vizibil */
 }
-.search-section{
+.search-section {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 60px;
-
 }
 
 .search-form {
@@ -719,9 +717,9 @@ button:hover {
   flex-direction: column;
   gap: 10px;
   padding: 15px;
- 
-  border-radius: 8px; 
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); 
+
+  border-radius: 8px;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 .events-container {
   display: grid;
@@ -740,7 +738,7 @@ button:hover {
   height: 100%;
 }
 
-.events-title{
+.events-title {
   font-size: 34px;
   font-weight: bold;
   color: #d2d2d2;
@@ -776,13 +774,13 @@ button:hover {
   border: none;
   cursor: pointer;
   color: white; /* Setează culoarea textului la alb */
-  
+
   /* Aplică tranziții pe fundal și pe culoarea textului */
   transition: 0.3s ease, color 0.3s ease;
 }
 
 .comment-form button:hover {
-background-color: #388efe;
+  background-color: #388efe;
   color: white; /* Culoarea textului rămâne albă, dar tranziția pe fundal va fi evidentă */
 }
 
@@ -839,11 +837,11 @@ background-color: #388efe;
   background: linear-gradient(133deg, #ffffff 0%, #91b7d4 100%);
   border-radius: 12px;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
 }
 
 .edit-events-title {
-font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 2.4rem;
   font-weight: bold;
   color: #333;
@@ -900,7 +898,12 @@ font-family: Arial, Helvetica, sans-serif;
   border: 1px solid #ddd;
   border-radius: 6px;
   font-size: 1rem;
-  background-color: rgba(245, 245, 245, 0.8); /* Transparent background for input */
+  background-color: rgba(
+    245,
+    245,
+    245,
+    0.8
+  ); /* Transparent background for input */
   transition: background-color 0.3s ease;
 }
 
@@ -934,7 +937,12 @@ font-family: Arial, Helvetica, sans-serif;
 .back-button {
   display: inline-block;
   padding: 12px 18px;
-  background-color: rgba(240, 240, 240, 0.8); /* Transparent background for back button */
+  background-color: rgba(
+    240,
+    240,
+    240,
+    0.8
+  ); /* Transparent background for back button */
   color: #333;
   text-decoration: none;
   border-radius: 6px;
@@ -951,116 +959,116 @@ font-family: Arial, Helvetica, sans-serif;
 /*contact*/
 .contact-content {
   display: flex;
-justify-content: center;
-gap: 100px;
+  justify-content: center;
+  gap: 100px;
   align-items: center;
   width: 80%;
-      margin: 0 auto;
-      padding: 20px;
+  margin: 0 auto;
+  padding: 20px;
 
-      border-radius: 8px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  }
-  
-  h1, h2 {
-   color: rgb(172, 171, 171);
-   font-size: 2rem;
- 
-  }
-  .contact-welcome{
-    font-size: 2rem;
-    color: #d0d0d0;
-  }
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
 
-  .contact-info {
-      margin-bottom: 300px;
-   
-      font-size: 20px;
-color: white;
-  }
+h1,
+h2 {
+  color: rgb(172, 171, 171);
+  font-size: 2rem;
+}
+.contact-welcome {
+  font-size: 2rem;
+  color: #d0d0d0;
+}
 
-  .contact-info a {
-      color: #007BFF;
-      text-decoration: none;
-  }
+.contact-info {
+  margin-bottom: 300px;
 
-  .contact-info a:hover {
-      text-decoration: underline;
-  }
+  font-size: 20px;
+  color: white;
+}
 
-  /* Form Styles */
+.contact-info a {
+  color: #007bff;
+  text-decoration: none;
+}
 
-  .contact-details{
-    display: flex;
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
+/* Form Styles */
+
+.contact-details {
+  display: flex;
   flex-direction: column;
   max-width: 500px;
-  }
-  .contact-form {
-    width: 340px;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      margin-top: 20px;
-  }
+}
+.contact-form {
+  width: 340px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
 
-  .form-group {
-      display: flex;
-      flex-direction: column;
-  }
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
 
-  .form-group label {
-      font-size: 16px;
-      margin-bottom: 5px;
-      color: #333;
-  }
+.form-group label {
+  font-size: 16px;
+  margin-bottom: 5px;
+  color: #333;
+}
 
-  .form-group input,
-  .form-group textarea {
-      padding: 10px;
-      font-size: 16px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-  }
+.form-group input,
+.form-group textarea {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
 
-  .form-group input:focus,
-  .form-group textarea:focus {
-      border-color: #007BFF;
-      outline: none;
-  }
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #007bff;
+  outline: none;
+}
 
-  .form-group textarea {
-      resize: vertical;
-      min-height: 120px;
-  }
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
 
-  .submit-btn {
-      padding: 12px 20px;
-      background-color: #007BFF;
-      color: white;
-      font-size: 16px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-  }
+.submit-btn {
+  padding: 12px 20px;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
 
-  .submit-btn:hover {
-      background-color: #0056b3;
-  }
+.submit-btn:hover {
+  background-color: #0056b3;
+}
 
-  .contact-details p strong {
-    color: #a2a2a6; /* Albastru pentru iconițe și etichete */
+.contact-details p strong {
+  color: #a2a2a6; /* Albastru pentru iconițe și etichete */
 }
 
 .contact-details a {
-    color: #d1d1d1; /* Verde pentru linkuri */
-    text-decoration: none;
-    font-weight: bold;
+  color: #d1d1d1; /* Verde pentru linkuri */
+  text-decoration: none;
+  font-weight: bold;
 }
 
 .contact-details a:hover {
-    color: #c2c2c2; /* Verde mai închis la hover */
-    text-decoration: underline;
+  color: #c2c2c2; /* Verde mai închis la hover */
+  text-decoration: underline;
 }
 
 .map-container {
@@ -1074,5 +1082,4 @@ color: white;
   height: 273px;
   border-radius: 10px;
 }
-
 

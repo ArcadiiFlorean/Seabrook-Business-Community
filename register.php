@@ -24,18 +24,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Dacă utilizatorul există deja, arată un mesaj de eroare
         echo "Utilizatorul sau email-ul există deja!";
     } else {
-        // Criptează parola
-        $password_hash = password_hash($password, PASSWORD_BCRYPT);
+        // ✅ Criptează parola corect
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        // Inserare utilizator în baza de date
-        $stmt = $pdo->prepare("INSERT INTO users (username, email, password_hash, role, created_at) 
-                               VALUES (:username, :email, :password_hash, :role, NOW())");
-
+        // ✅ Inserare utilizator în baza de date
+        $sql = "INSERT INTO users (username, email, password) VALUES (:username, :email, :password)";
+        $stmt = $pdo->prepare($sql);
         $stmt->execute([
             'username' => $username,
             'email' => $email,
-            'password_hash' => $password_hash,
-            'role' => $role
+            'password' => $hashedPassword
         ]);
 
         echo "Înregistrare reușită! Poți acum să te loghezi.";
@@ -56,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="container">
         <div class="register-content">
             <h1>Înregistrează-te</h1>
-            <form method="POST">
+            <form class="form-register-content" method="POST">
                 <label for="username">Username:</label>
                 <input type="text" name="username" id="username" required>
                 
